@@ -22,5 +22,3 @@ uintptr_t scanSig(const char* module, const char* sig)
     const char* pat = sig;
     // tbf
 }
-
-
