@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Public">
+      <UniqueIdentifier>{862640fd-bbc4-4f8c-af72-f3286ae40546}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{2d54948f-add7-4736-b380-4f649ed1b525}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\Minhook">
+      <UniqueIdentifier>{18054723-ce54-41b8-9c74-ca0242553a18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\Minhook\hde">
+      <UniqueIdentifier>{33018fc0-8189-4f5d-a959-054f86aef22e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\Imgui">
+      <UniqueIdentifier>{3358d21f-a3f0-4345-8b6b-6c3eb3ff440c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\Imgui\backend">
+      <UniqueIdentifier>{2a7f6041-c998-4a98-9d18-fc91d8eea9b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Memory">
+      <UniqueIdentifier>{29d7b624-1064-493c-b9ad-c22f3b8a27cd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\dllmain.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Public\Minhook\buffer.c">
+      <Filter>Public\Minhook</Filter>
+    </ClCompile>
+    <ClCompile Include="Public\Minhook\hook.c">
+      <Filter>Public\Minhook</Filter>
+    </ClCompile>
+    <ClCompile Include="Public\Minhook\trampoline.c">
+      <Filter>Public\Minhook</Filter>
+    </ClCompile>
+    <ClCompile Include="Public\Minhook\hde\hde32.c">
+      <Filter>Public\Minhook\hde</Filter>
+    </ClCompile>
+    <ClCompile Include="Public\Minhook\hde\hde64.c">
+      <Filter>Public\Minhook\hde</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\hooks.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Public\Imgui\imgui.cpp">
+      <Filter>Public\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Public\Imgui\imgui_demo.cpp">
+      <Filter>Public\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Public\Imgui\imgui_draw.cpp">
+      <Filter>Public\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Public\Imgui\imgui_tables.cpp">
+      <Filter>Public\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Public\Imgui\imgui_widgets.cpp">
+      <Filter>Public\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Public\Imgui\backend\imgui_impl_dx11.cpp">
+      <Filter>Public\Imgui\backend</Filter>
+    </ClCompile>
+    <ClCompile Include="Public\Imgui\backend\imgui_impl_win32.cpp">
+      <Filter>Public\Imgui\backend</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Public\Minhook\buffer.h">
+      <Filter>Public\Minhook</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Minhook\trampoline.h">
+      <Filter>Public\Minhook</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Minhook\hde\hde32.h">
+      <Filter>Public\Minhook\hde</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Minhook\hde\hde64.h">
+      <Filter>Public\Minhook\hde</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Minhook\hde\pstdint.h">
+      <Filter>Public\Minhook\hde</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Minhook\hde\table32.h">
+      <Filter>Public\Minhook\hde</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Minhook\hde\table64.h">
+      <Filter>Public\Minhook\hde</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Minhook\MinHook.h">
+      <Filter>Public\Minhook</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\hooks.hpp">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Imgui\imconfig.h">
+      <Filter>Public\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Imgui\imgui.h">
+      <Filter>Public\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Imgui\imgui_internal.h">
+      <Filter>Public\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Imgui\imstb_rectpack.h">
+      <Filter>Public\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Imgui\imstb_textedit.h">
+      <Filter>Public\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Imgui\imstb_truetype.h">
+      <Filter>Public\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Imgui\backend\imgui_impl_dx11.h">
+      <Filter>Public\Imgui\backend</Filter>
+    </ClInclude>
+    <ClInclude Include="Public\Imgui\backend\imgui_impl_win32.h">
+      <Filter>Public\Imgui\backend</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\common.hpp">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Memory\operations.hpp">
+      <Filter>Source\Memory</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
