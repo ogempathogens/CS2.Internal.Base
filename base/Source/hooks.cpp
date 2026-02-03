@@ -2,10 +2,12 @@
     provided by Starclub
 */
 
-#include "hooks.hpp"
+#include "../Source/hooks.hpp"
+#include "../Source/Memory/operations.hpp"
 #include "../Public/Imgui/imgui.h"
 #include "../Public/Imgui/backend/imgui_impl_dx11.h"
 #include "../Public/Imgui/backend/imgui_impl_win32.h"
+#include "globals.hpp"
 
 #pragma comment(lib, "d3d11.lib")
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -23,6 +25,9 @@ bool Hooks::Initialize() {
 
     setupDevice();
     window = FindWindowA("SDL_app", nullptr);
+
+    scanPatterns();
+    createHooks();
 
     return true;
 }
@@ -56,7 +61,8 @@ void Hooks::setupDevice() {
     wc.lpszClassName = "null";
 
     RegisterClassExA(&wc);
-    HWND hwnd = CreateWindowA(
+    HWND hwnd = CreateWindowA
+    (
         "null",
         "",
         WS_OVERLAPPEDWINDOW,
@@ -114,11 +120,19 @@ void Hooks::setupDevice() {
     UnregisterClassA("null", wc.hInstance);
 }
 
-HRESULT __stdcall Hooks::Present(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT Flags) {
+HRESULT __stdcall Hooks::Present
+(
+    IDXGISwapChain* pSwapChain, 
+    UINT SyncInterval, 
+    UINT Flags
+) 
+{
     static bool init = false;
 
-    if (!init) {
-        if (FAILED(pSwapChain->GetDevice(__uuidof(ID3D11Device), (void**)&pDevice))) {
+    if (!init) 
+    {
+        if (FAILED(pSwapChain->GetDevice(__uuidof(ID3D11Device), (void**)&pDevice))) 
+        {
             return oPresent(pSwapChain, SyncInterval, Flags);
         }
 
@@ -148,7 +162,8 @@ HRESULT __stdcall Hooks::Present(IDXGISwapChain* pSwapChain, UINT SyncInterval, 
         imguiInitialized = true;
     }
 
-    if (GetAsyncKeyState(VK_INSERT) & 1) {
+    if (GetAsyncKeyState(VK_INSERT) & 1) 
+    {
         menuOpen = !menuOpen;
     }
 
@@ -156,11 +171,13 @@ HRESULT __stdcall Hooks::Present(IDXGISwapChain* pSwapChain, UINT SyncInterval, 
     ImGui_ImplWin32_NewFrame();
     ImGui::NewFrame();
 
-    if (menuOpen) {
+    if (menuOpen) 
+    {
         ImGui::Begin("Menu", &menuOpen);
         ImGui::Text("text");
         ImGui::End();
     }
+
 
     ImGui::Render();
     pContext->OMSetRenderTargets(1, &mainRenderTargetView, nullptr);
@@ -169,9 +186,45 @@ HRESULT __stdcall Hooks::Present(IDXGISwapChain* pSwapChain, UINT SyncInterval, 
     return oPresent(pSwapChain, SyncInterval, Flags);
 }
 
-LRESULT __stdcall Hooks::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
-    if (menuOpen && ImGui_ImplWin32_WndProcHandler(hWnd, uMsg, wParam, lParam)) {
+LRESULT __stdcall Hooks::WndProc
+(
+    HWND hWnd, 
+    UINT uMsg, 
+    WPARAM wParam, 
+    LPARAM lParam
+) 
+{
+    if (menuOpen && ImGui_ImplWin32_WndProcHandler(hWnd, uMsg, wParam, lParam)) 
+    {
         return true;
     }
+
     return CallWindowProc(oWndProc, hWnd, uMsg, wParam, lParam);
+}
+
+void Hooks::scanPatterns()
+{
+    DrawCrosshair = scanSig(client_dll, "48 89 5C 24 08 57 48 83 EC 20 48 8B D9 E8 ?? ?? ?? ?? 48 85");
+}
+
+void Hooks::createHooks()
+{
+    if (!DrawCrosshair)
+        return;
+
+    MH_STATUS status = MH_CreateHook(
+        reinterpret_cast<void*>(DrawCrosshair),
+        &hkDrawCrosshair,
+        reinterpret_cast<void**>(&oDrawCrosshair)
+    );
+
+    if (status != MH_OK)
+        return;
+
+    MH_EnableHook(reinterpret_cast<void*>(DrawCrosshair));
+}
+
+bool __fastcall Hooks::hkDrawCrosshair(void* a1)
+{
+    return true;
 }

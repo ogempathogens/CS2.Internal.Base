@@ -52,6 +52,7 @@
     <ClInclude Include="Public\Minhook\MinHook.h" />
     <ClInclude Include="Public\Minhook\trampoline.h" />
     <ClInclude Include="Source\common.hpp" />
+    <ClInclude Include="Source\globals.hpp" />
     <ClInclude Include="Source\hooks.hpp" />
     <ClInclude Include="Source\Memory\operations.hpp" />
   </ItemGroup>

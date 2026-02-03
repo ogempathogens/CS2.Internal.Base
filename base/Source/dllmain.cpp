@@ -1,5 +1,15 @@
 /*
-    provided by Starclub
+    provided by Starclub.
+
+    recommended case rules;
+    - use PascalCase for functions with only 1 word
+    - use camelCase for functions with more than 2 words
+
+    recommended format rules;
+    - keep 1/2 arg functions one-lined
+    - functions with more than 2 args should be multilined for better readability
+    - opening brace should start on new line
+
 */
 
 #include "../Source/common.hpp"
@@ -7,10 +17,7 @@
 
 //#define _dbg
 
-void Init
-(
-    HMODULE hModule
-) 
+void Init(HMODULE hModule) 
 {
 #ifdef _dbg
     AllocConsole();

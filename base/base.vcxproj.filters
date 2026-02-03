@@ -125,5 +125,8 @@
     <ClInclude Include="Source\Memory\operations.hpp">
       <Filter>Source\Memory</Filter>
     </ClInclude>
+    <ClInclude Include="Source\globals.hpp">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
