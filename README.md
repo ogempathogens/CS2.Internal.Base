@@ -3,6 +3,7 @@
 Features:
 - Hooks using MinHook
 - Draws an ImGui window inside the game
+- Basic sig scanning
 
 ## How to build:
 - Everything should work out of the box, if you aren't using VS/don't want to use the project files, make sure you are compiling with C++20
